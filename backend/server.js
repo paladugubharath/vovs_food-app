@@ -51,10 +51,10 @@ app.get("/", (req, res) => {
   });
 });
 
-// 404 Handler for API Routes
-app.use("/api/*", (req, res) => {
+// 404 Handler
+app.use((req, res) => {
   res.status(404).json({
-    message: "API route not found",
+    message: "Route not found",
   });
 });
 
