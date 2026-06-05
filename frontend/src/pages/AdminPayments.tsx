@@ -11,7 +11,7 @@ const AdminPayments = () => {
     try{
 
       const res = await axios.get(
-        "http://localhost:5000/api/order"
+        "https://vovs-food-app.onrender.com/api/order"
       );
 
       setOrders(res.data);
@@ -35,7 +35,7 @@ const AdminPayments = () => {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/order/verify/${id}`
+        `https://vovs-food-app.onrender.com/api/order/verify/${id}`
       );
 
       // refresh orders

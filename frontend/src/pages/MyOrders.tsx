@@ -33,7 +33,7 @@ const MyOrders = () => {
     const fetchOrders = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/order/my/${username}`
+          `https://vovs-food-app.onrender.com/api/order/my/${username}`
         );
 
         console.log("Orders API response:", res.data);

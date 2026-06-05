@@ -59,7 +59,7 @@ const TrackOrder = () => {
       try{
 
         const res = await axios.get(
-          `http://localhost:5000/api/order/track/${orderId}`
+          `https://vovs-food-app.onrender.com/api/order/track/${orderId}`
         );
 
         setStatus(res.data.status);

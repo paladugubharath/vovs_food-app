@@ -21,7 +21,7 @@ const ForgotPassword: React.FC = () => {
     try {
 
       await axios.post(
-        "http://localhost:5000/api/auth/reset-password",
+        "https://vovs-food-app.onrender.com/api/auth/reset-password",
         {
           username,
           newPassword

@@ -77,7 +77,7 @@ const Payment = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/order",
+        "https://vovs-food-app.onrender.com/api/order",
         orderData
       );
 

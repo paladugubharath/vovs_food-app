@@ -15,7 +15,7 @@ const Products = () => {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/products"
+        "https://vovs-food-app.onrender.com/api/products"
       );
 
       setProducts(res.data);
@@ -33,7 +33,7 @@ const Products = () => {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/products/${id}`
+        `https://vovs-food-app.onrender.com/api/products/${id}`
       );
 
       setProducts(products.filter(p => p._id !== id));
