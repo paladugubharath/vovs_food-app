@@ -11,9 +11,9 @@ export const connectDB = async () => {
 
     console.log("✅ MongoDB Connected");
   } catch (err) {
-    console.error("❌ MongoDB Error:", err.message);
-    process.exit(1);
-  }
+  console.error("❌ MongoDB Error:", err);
+  process.exit(1);
+}
 };
 
 // 🔹 your debug listeners (keep as-is)
