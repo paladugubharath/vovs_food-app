@@ -10,7 +10,7 @@ const AdminOrders = () => {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/orders"
+        "https://vovs-food-app.onrender.com/api/orders"
       );
 
       setOrders(res.data);

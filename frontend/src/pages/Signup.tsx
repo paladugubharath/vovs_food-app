@@ -40,7 +40,7 @@ const Signup: React.FC = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        "https://vovs-food-app.onrender.com/api/auth/signup",
         {
           username: form.username,
           password: form.password

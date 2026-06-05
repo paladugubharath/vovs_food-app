@@ -1,7 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import path from "path";
 
 import { connectDB } from "./config/db.js";
 
@@ -13,41 +12,50 @@ import reviewRoutes from "./routes/reviews.js";
 
 dotenv.config();
 
+// Connect MongoDB
 connectDB();
 
 const app = express();
 
-app.use(cors());
+// CORS Configuration
+app.use(
+  cors({
+    origin: [
+      "http://localhost:8081",
+      "http://localhost:5173",
+      "https://vovs-food-app-1.onrender.com",
+    ],
+    credentials: true,
+  })
+);
+
+// Middleware
 app.use(express.json());
 
-// API ROUTES
+// API Routes
 app.use("/api/order", orderRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/visitor", visitorRoutes);
 app.use("/api/reviews", reviewRoutes);
-// TEST ROUTE
+
+// Test Route
 app.get("/api/test", (req, res) => {
   res.json({ message: "API working" });
 });
 
-// SERVE FRONTEND
-const __dirname = path.resolve();
-const distPath = path.join(__dirname, "../frontend/dist");
+// Root Route
+app.get("/", (req, res) => {
+  res.json({
+    status: "Backend running successfully",
+  });
+});
 
-app.use(express.static(distPath));
-
-// SPA ROUTING
-app.use((req, res) => {
-
-  if (req.path.startsWith("/api")) {
-    return res.status(404).json({
-      message: "API route not found"
-    });
-  }
-
-  res.sendFile(path.join(distPath, "index.html"));
-
+// 404 Handler for API Routes
+app.use("/api/*", (req, res) => {
+  res.status(404).json({
+    message: "API route not found",
+  });
 });
 
 const PORT = process.env.PORT || 5000;
