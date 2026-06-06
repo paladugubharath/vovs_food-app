@@ -1,4 +1,4 @@
-code pipeline {
+pipeline {
 
     agent any
 
